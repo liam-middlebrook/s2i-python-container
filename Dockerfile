@@ -24,7 +24,7 @@ RUN yum install -y centos-release-scl-rh && \
     rpm -e --nodeps centos-logos && \
     yum clean all -y
 
-RUN pip install -U pip
+RUN /opt/rh/rh-python35/root/usr/bin/pip install -U pip
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
