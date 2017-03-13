@@ -24,6 +24,9 @@ RUN yum install -y centos-release-scl-rh epel-release && \
     rpm -e --nodeps centos-logos && \
     yum clean all -y
 
+# ImageMagick Use dcraw Instead of ufraw
+RUN sed -iE 's/.*ufraw.*/  \<delegate decode="dng:decode" command="\&quot;dcraw\&quot; -c -q 3 -H 5 -w \&qout;%i\&qout; | \&qout;\/opt\/libjpeg-turbo\/bin\/cjpeg\&qout; -quality 100 > \&qout;%o\&quot;"\/>/g' /etc/ImageMagick/delegates.xml
+
 RUN LD_LIBRARY_PATH=/opt/rh/rh-python35/root/usr/lib64 /opt/rh/rh-python35/root/usr/bin/pip install -U pip
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
