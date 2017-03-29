@@ -69,7 +69,7 @@ if is_gunicorn_installed; then
     export WEB_CONCURRENCY=4
 
     echo "---> Serving application with gunicorn ($APP_MODULE) ..."
-    exec gunicorn "$APP_MODULE" --capture-output --bind=0.0.0.0:8080 --access-logfile=- --config "$APP_CONFIG"
+    exec gunicorn "$APP_MODULE" -r 120 --capture-output --bind=0.0.0.0:8080 --access-logfile=- --config "$APP_CONFIG"
   fi
 fi
 
