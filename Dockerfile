@@ -24,7 +24,7 @@ RUN yum install -y centos-release-scl-rh epel-release && \
     rpm -e --nodeps centos-logos && \
     yum clean all -y
 
-RUN yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
+RUN yum localinstall -y --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
 
 RUN yum install ffmpeg -y
 
